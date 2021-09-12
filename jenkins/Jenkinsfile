@@ -43,12 +43,12 @@ pipeline {
                     script {
                         sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$production_server_ip \"docker pull chrisneal11/devops_capstone:${env.BUILD_NUMBER}\""
                         try {
-                            sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$produciton_server_ip \"docker stop capstone\""
-                            sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$production_server_ip \"docker rm capstone\""
+                            sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$produciton_server_ip \"docker stop devops_capstone\""
+                            sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$production_server_ip \"docker rm devops_capstone\""
                         } catch (err) {
                             echo: 'caught error: $err'
                         }
-                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$production_server_ip \"docker run --restart always --name capstone -p 8080:80 -d chrisneal11/devops_capstone:${env.BUILD_NUMBER}\""
+                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$production_server_ip \"docker run --restart always --name devops_capstone -p 8080:80 -d chrisneal11/devops_capstone:${env.BUILD_NUMBER}\""
                     }
                 }
             }
