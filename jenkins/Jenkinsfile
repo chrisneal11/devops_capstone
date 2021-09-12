@@ -39,7 +39,7 @@ pipeline {
         }        
       stage('Deploy To Production') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
+
                     script {
                         sh "ssh -i "/home/ubuntu/.ssh/aws-lab.pem" -o StrictHostKeyChecking=no ubuntu@172.31.18.102 \"docker pull chrisneal11/devops_capstone:latest\""
                         try {
