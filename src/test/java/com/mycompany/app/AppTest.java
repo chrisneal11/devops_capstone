@@ -36,7 +36,7 @@ public class AppTest
         try {
             assertEquals("<html><h1>Hello!   This is the demo of the Aetna automation update." + System.getProperty("line.separator"), outContent.toString());
         } catch (AssertionError e) {
-            fail("\"message\" is not \"Hello World!\"");
+            fail("\"message\" is not \"Hello!   This is the demo of the Aetna automation update.\"");
         }
     }
 
