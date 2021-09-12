@@ -37,7 +37,7 @@ pipeline {
                 }
             }
         }        
-        stage('DeployToProduction') {
+        stage('Deploy To Production') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     script {
