@@ -39,7 +39,7 @@ pipeline {
         }        
       stage('Deploy To Production') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
+//                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     script {
                         sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$production_server_ip \"docker pull chrisneal11/devops_capstone:${env.BUILD_NUMBER}\""
                         try {
@@ -50,7 +50,7 @@ pipeline {
                         }
                         sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$production_server_ip \"docker run --restart always --name devops_capstone -p 8080:80 -d chrisneal11/devops_capstone:${env.BUILD_NUMBER}\""
                     }
-                }
+//                }
             }
         }
     }   
