@@ -50,7 +50,6 @@ pipeline {
                         sh "ssh -i "~/.ssh/aws-lab.pem" -o StrictHostKeyChecking=no ubuntu@172.31.18.105 \"docker run --restart always --name devops_capstone -p 8080:80 -d chrisneal11/devops_capstone:${env.BUILD_NUMBER}\""
                     }
                 }
-            }
         }
 //      stage('Deploy To Production') {
 //            steps {
