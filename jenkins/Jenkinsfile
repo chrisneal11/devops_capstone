@@ -39,12 +39,10 @@ pipeline {
         }        
         stage('Deploy To Production') {
             steps {
-                    script {
-                        sh "ssh -i "/home/ubuntu/.ssh/aws-lab.pem" -o StrictHostKeyChecking=no ubuntu@172.31.18.102 \"docker pull chrisneal11/devops_capstone:latest\""
-                        sh "ssh -i "/home/ubuntu/.ssh/aws-lab.pem" -o StrictHostKeyChecking=no ubuntu@172.31.18.102 \"docker stop devops_capstone\""
-                        sh "ssh -i "/home/ubuntu/.ssh/aws-lab.pem" -o StrictHostKeyChecking=no ubuntu@172.31.18.102 \"docker rm devops_capstone\""
-                        sh "ssh -i "/home/ubuntu/.ssh/aws-lab.pem" -o StrictHostKeyChecking=no ubuntu@172.31.18.102 \"docker run --restart always --name devops_capstone -p 8080:80 -d chrisneal11/devops_capstone:${env.BUILD_NUMBER}\""
-                           }
+                              sh "ssh -i "/home/ubuntu/.ssh/aws-lab.pem" -o StrictHostKeyChecking=no ubuntu@172.31.18.102 \"docker pull chrisneal11/devops_capstone:latest\""
+                              sh "ssh -i "/home/ubuntu/.ssh/aws-lab.pem" -o StrictHostKeyChecking=no ubuntu@172.31.18.102 \"docker stop devops_capstone\""
+                              sh "ssh -i "/home/ubuntu/.ssh/aws-lab.pem" -o StrictHostKeyChecking=no ubuntu@172.31.18.102 \"docker rm devops_capstone\""
+                              sh "ssh -i "/home/ubuntu/.ssh/aws-lab.pem" -o StrictHostKeyChecking=no ubuntu@172.31.18.102 \"docker run --restart always --name devops_capstone -p 8080:80 -d chrisneal11/devops_capstone:${env.BUILD_NUMBER}\""
                    }
         }
 //      stage('Deploy To Production') {
