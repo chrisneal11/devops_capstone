@@ -1,7 +1,7 @@
 package com.mycompany.app;
 
 /**
- * Hello world!
+ * Hello world! Last updated March 15th, 2022
  */
 public class App
 {
